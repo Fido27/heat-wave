@@ -1,12 +1,14 @@
 function getCurrLoc() {
-
+    const watchID = navigator.geolocation.watchPosition(success, error, options);
+    console.log("Watch ID: " + watchID);
 }
 
 function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    // Do something with your latitude and longitude
+    console.log(latitude);
+    console.log(longitude);
 }
 
 function error() {
@@ -18,5 +20,3 @@ const options = {
     maximumAge: 30000,
     timeout: 27000,
 };
-
-const watchID = navigator.geolocation.watchPosition(success, error, options);
