@@ -1,6 +1,6 @@
 export function getCurrLoc() {
-    //const watchID = navigator.geolocation.watchPosition(success, error, options);
-    console.log("Watch ID: ");
+    const watchID = navigator.geolocation.watchPosition(success, error, options);
+    console.log("Watch ID: " + watchID);
 }
 
 function success(position) {
