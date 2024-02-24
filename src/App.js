@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {getCurrLoc} from './backend/location.js'; 
 
@@ -11,11 +10,11 @@ function App() {
     <div className="container-Temp"> 
         {/* //heat wave warning header with temperature */}
         <div className="header">
-          <h1>Heat Wave Warning</h1>
+          <span h1>Heat Wave Warning</span>
 
           {/*change temperature according to the temperature */}
           <h2 className='temperature'>100 °F</h2>
-          <p className='warning'>Heat warning from </p>
+          <span className='warning'>Heat warning from </span>
         </div>
     </div>
 
@@ -29,7 +28,7 @@ function App() {
         <button className="call-button">Call</button>
         {/*calling getCurrLoc function in location.js*/}
         <button className="location-button" onClick={getCurrLoc}>Location</button>
-        
+
 
       </div>
     
