@@ -1,5 +1,7 @@
 import './App.css';
-import {getCurrLoc} from './backend/location.js'; 
+import { getCurrLoc } from './backend/location.js'; 
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function App() {
   return (
@@ -25,7 +27,9 @@ function App() {
       <div className="Call help">
 
         {/*button to call for help */}
-        <button className="call-button">Call</button>
+        <button className="call-button">
+          <FontAwesomeIcon icon={faPhone} />
+        </button>
         {/*calling getCurrLoc function in location.js*/}
         <button className="location-button" onClick={getCurrLoc}>Location</button>
 
