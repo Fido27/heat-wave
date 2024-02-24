@@ -6,13 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function App() {
   return (
     <div className="App">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-      
+
     {/* // 3 main containers for  */}
     <div className="container-Temp"> 
         {/* //heat wave warning header with temperature */}
         <div className="header">
-          <span h1>Heat Wave Warning</span>
+          <span className='warning-message'><h1>Heat Wave Working</h1></span>
 
           {/*change temperature according to the temperature */}
           <h2 className='temperature'>100 °F</h2>
