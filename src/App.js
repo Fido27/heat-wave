@@ -1,61 +1,62 @@
 import './App.css';
-import { getCurrLoc } from './backend/location.js'; 
-import { faPhone, faLocationDot, faStethoscope } from '@fortawesome/free-solid-svg-icons';
+import { getCurrLoc } from './backend/location.js';
+import { faPhone, faLocationDot, faStethoscope, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function App() {
   return (
     <div className="App">
 
-    {/*main container */}
-    <div className="main-container">
+      {/*main container */}
+      <div className="main-container">
 
-      {/* // 3 main containers for  */}
-      <div className="container-Temp"> 
+        {/* // 3 main containers for  */}
+        <div className="container-Temp">
           {/* //heat wave warning header with temperature */}
           <div className="header">
             <span className='warning-message'><h1>Heat Wave Warning</h1></span>
 
             {/*change temperature according to the temperature */}
-            <h2 className='temperature'>100 °F</h2>
-            <span className='warning'>Heat warning from </span>
+            <p className='warning'>Dangerous heat levels expected! Take precautions to stay cool and hydrated. </p>
+            <h2 className='temperature'>110 °F</h2>
           </div>
-      </div>
-
-      <div className="container-Info"></div>
-
-
-      <div className="container-Help">
-
-        <div className="Call help">
-
-          {/*button to call for help */}
-          <button className="call-button">
-            <FontAwesomeIcon icon={faPhone} />
-          </button>
-
         </div>
+
+        <div className="container-Info">
+          <button className='info-button'>
+          <FontAwesomeIcon icon={faCircleInfo} /> <span className="label">Heat Wave Guide</span>
+          </button>
+        </div>
+
+
+        <div className="container-Help">
+          <div className="Call help">
+            <button className="call-button">
+              <FontAwesomeIcon icon={faPhone} /> <span>Call for Help</span>
+            </button>
+          </div>
+        </div>
+
+
 
         <div className="Location help">
 
           {/*calling getCurrLoc function in location.js*/}
-          <button className="location-button" onClick={getCurrLoc}><FontAwesomeIcon icon={faLocationDot} /></button>
+          <button className="location-button" onClick={getCurrLoc}><FontAwesomeIcon icon={faLocationDot} /> <span> Refugee Centers</span></button>
 
         </div>
 
         <div className="Hospital help">
           {/*button for hospital */}
-          <button className="hospital-button"><FontAwesomeIcon icon={faStethoscope} /></button>
+          <button className="hospital-button"><FontAwesomeIcon icon={faStethoscope} /> <span>Nearest Hospital</span></button>
 
 
         </div>
-      
+
       </div>
 
     </div>
 
-  </div>
-    
   );
 }
 
