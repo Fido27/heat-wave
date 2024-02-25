@@ -22,9 +22,12 @@ export default function Home() {
                             <span className='warning-message'><h1>Heat Wave Warning</h1></span>
 
                             {/*change temperature according to the temperature */}
-                            <p className='warning'>Dangerous heat levels expected! Take precautions to stay cool and hydrated. </p>
+                            <p className='warning'>No Upcoming Heat Waves</p>
+                            {/* <p className='warning'>Dangerous heat levels expected! Take precautions to stay cool and hydrated. </p> */}
+                            <p className='warning'>Weather conditions are ideal. Enjoy the sunshine and your day.</p>
                             <p className='Date'><DateComponent /></p>
                             <h2 className='temperature'><WeatherComponent /></h2>
+                            {/* <h2 className='temperature'> 120 °F</h2> */}
                         </div>
                     </div>
 
@@ -40,10 +43,11 @@ export default function Home() {
 
                     <div className="container-Help">
                         <div className="Call help">
-                            <a href="tel:+14807917066" className="call-button"/>
-                            <button>
-                                <FontAwesomeIcon icon={faPhone} /> <span>Call for Help</span>
-                            </button>
+                            <a href="tel:+14807917066" className="call-button">
+                                <button>
+                                    <FontAwesomeIcon icon={faPhone} /> <span>Call for Help</span>
+                                </button>
+                            </a>
                         </div>
                     </div>
 
@@ -59,9 +63,9 @@ export default function Home() {
                     <div className="Hospital help">
 
                         <Link to={"/hospital"}>
-                        {/*button for hospital */}
-                        <button className="hospital-button"><FontAwesomeIcon icon={faStethoscope} /> <span>Nearest Hospital</span></button>
-                        </Link> 
+                            {/*button for hospital */}
+                            <button className="hospital-button"><FontAwesomeIcon icon={faStethoscope} /> <span>Nearest Hospital</span></button>
+                        </Link>
 
                     </div>
 
