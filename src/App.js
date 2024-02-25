@@ -2,6 +2,7 @@ import './App.css';
 import { getCurrLoc } from './backend/location.js'; 
 import { faPhone, faLocationDot, faStethoscope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MyMapComponent from './map.js';
 
 function App() {
   return (
