@@ -4,9 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 import WeatherComponent from './weatherData.js';
+import { getCurrentDateTime } from './dateTime'; 
 
 
 export default function Home() {
+    const { day, date, time } = getCurrentDateTime();
+
     return (
         <>
             <div className="Home">
@@ -24,6 +27,10 @@ export default function Home() {
                             {/*change temperature according to the temperature */}
                             <p className='warning'>Dangerous heat levels expected! Take precautions to stay cool and hydrated. </p>
                             <h2 className='temperature'><WeatherComponent /></h2>
+                            <div className="current-date-time">
+                                <p>{day}, {date}</p>
+                                <p>{time}</p>
+                            </div>
                         </div>
                     </div>
 
@@ -39,9 +46,11 @@ export default function Home() {
 
                     <div className="container-Help">
                         <div className="Call help">
-                            <button className="call-button">
-                                <FontAwesomeIcon icon={faPhone} /> <span>Call for Help</span>
-                            </button>
+                            <a href="tel:+16023886865" className="call-button">
+                                <button className="call-button">
+                                    <FontAwesomeIcon icon={faPhone} /> <span>Call for Help</span>
+                                </button>
+                            </a>
                         </div>
                     </div>
 

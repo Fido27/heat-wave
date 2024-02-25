@@ -26,7 +26,7 @@ function WeatherComponent() {
   }, []);
 
   // Return JSX. Conditionally render temperature or loading state.
-  return temperature ? <span>{temperature} °F</span> : <span>Loading temperature...</span>;
+  return temperature ? <span>{Math.round(temperature - 6)} °F</span> : <span>Loading temperature...</span>;
 }
 
 export default WeatherComponent;
