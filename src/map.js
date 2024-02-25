@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { getCurrLoc } from './backend/location';
-import HospitalDetails from './backend/hospitalDetails.js'; // Import the component
 
 const mapContainerStyle = {
   width: '100vw',
@@ -57,7 +56,7 @@ function MyMapComponent() {
 
     const request = {
       location: userLocation, // Use userLocation for nearby search
-      radius: '25000',
+      radius: '5000',
       type: ['hospital'], // Make sure this is the correct type
     };
 
