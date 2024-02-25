@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { getCurrLoc } from './backend/location';
-import HospitalDetails from './backend/hospitalDetails.js'; // Import the component
 
 const mapContainerStyle = {
   width: '80vw',
