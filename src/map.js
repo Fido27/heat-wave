@@ -61,7 +61,7 @@ function MyMapComponent() {
 
     const request = {
       location: userLocation, // Use userLocation for nearby search
-      radius: '25000',
+      radius: '5000',
       type: ['hospital'], // Make sure this is the correct type
     };
 

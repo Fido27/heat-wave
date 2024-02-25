@@ -3,6 +3,8 @@ import { faPhone, faLocationDot, faStethoscope, faCircleInfo } from '@fortawesom
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
+import WeatherComponent from './weatherData.js';
+
 
 export default function Home() {
     return (
@@ -11,6 +13,11 @@ export default function Home() {
 
                 {/*main container */}
                 <div className="main-container">
+
+                    <div className="App">
+                        <WeatherComponent />
+                        {/* Other components */}
+                    </div>
 
                     {/* // 3 main containers for  */}
                     <div className="container-Temp">
