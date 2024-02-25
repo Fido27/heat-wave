@@ -1,7 +1,14 @@
 export function getCurrLoc() {
-    const watchID = navigator.geolocation.watchPosition(success, error, options);
-    console.log("Watch ID: " + watchID);
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
 }
+
+const options = {
+    enableHighAccuracy: true,
+    maximumAge: 30000,
+    timeout: 27000,
+};
 
 function success(position) {
     const latitude = position.coords.latitude;
@@ -11,9 +18,3 @@ function success(position) {
 function error() {
     alert("Sorry, no position available.");
 }
-
-const options = {
-    enableHighAccuracy: true,
-    maximumAge: 30000,
-    timeout: 27000,
-};

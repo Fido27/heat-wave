@@ -1,5 +1,6 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { getCurrLoc } from './backend/location';
 
 const mapContainerStyle = {
   width: '100vw',
@@ -7,20 +8,36 @@ const mapContainerStyle = {
 };
 
 const center = {
-    lat: -34.397,
-    lng: 150.644,
-  };
+  lat: -34.397,
+  lng: 150.644,
+};
 
-const libraries = ["places"]; // Required for using Places API
+const libraries = ["places"];
 
 function MyMapComponent() {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyBchUf958GR_Ft4i5aWdZzWKIr2IbKBMsQ",
+    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
   });
 
   const mapRef = useRef(null);
   const [places, setPlaces] = useState([]);
+  const [userLocation, setUserLocation] = useState(center); // Default to center, update later
+
+  useEffect(() => {
+    async function fetchLocation() {
+      try {
+        const position = await getCurrLoc();
+        const { latitude, longitude } = position.coords;
+        setUserLocation({ lat: latitude, lng: longitude });
+      } catch (error) {
+        console.error("Error getting current location:", error);
+        // Handle error or set a default location
+      }
+    }
+
+    fetchLocation();
+  }, []);
 
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
@@ -39,6 +56,7 @@ function MyMapComponent() {
     };
 
     service.nearbySearch(request, (results, status) => {
+      console.log(results)
       if (status === window.google.maps.places.PlacesServiceStatus.OK && results) {
         setPlaces(results);
       }
@@ -52,8 +70,9 @@ function MyMapComponent() {
     <GoogleMap
       mapContainerStyle={mapContainerStyle}
       zoom={8}
-      center={center}
-      onLoad={onMapLoad}
+      center={userLocation}
+      // onLoad={map => mapRef.current = map}
+      onLoad = {onMapLoad}
     >
       {places.map((place) => (
         <Marker key={place.place_id} position={place.geometry.location} />
