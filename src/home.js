@@ -2,6 +2,8 @@ import { getCurrLoc } from './backend/location.js';
 import { faPhone, faLocationDot, faStethoscope, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import DateComponent from './date.js';
+import WeatherComponent from './weatherData.js';
 
 
 export default function Home() {
@@ -12,6 +14,7 @@ export default function Home() {
                 {/*main container */}
                 <div className="main-container">
 
+
                     {/* // 3 main containers for  */}
                     <div className="container-Temp">
                         {/* //heat wave warning header with temperature */}
@@ -20,7 +23,8 @@ export default function Home() {
 
                             {/*change temperature according to the temperature */}
                             <p className='warning'>Dangerous heat levels expected! Take precautions to stay cool and hydrated. </p>
-                            <h2 className='temperature'>110 °F</h2>
+                            <p className='Date'><DateComponent /></p>
+                            <h2 className='temperature'><WeatherComponent /></h2>
                         </div>
                     </div>
 
@@ -52,10 +56,9 @@ export default function Home() {
                     </div>
 
                     <div className="Hospital help">
-                    <Link to={"/hospital"}>
                         {/*button for hospital */}
                         <button className="hospital-button"><FontAwesomeIcon icon={faStethoscope} /> <span>Nearest Hospital</span></button>
-                        </Link>
+
 
                     </div>
 
