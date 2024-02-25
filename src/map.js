@@ -7,11 +7,6 @@ const mapContainerStyle = {
   height: '100vh',
 };
 
-const center = {
-  lat: -34.397,
-  lng: 150.644,
-};
-
 const libraries = ["places"];
 
 function MyMapComponent() {
@@ -22,14 +17,20 @@ function MyMapComponent() {
 
   const mapRef = useRef(null);
   const [places, setPlaces] = useState([]);
-  const [userLocation, setUserLocation] = useState(center); // Default to center, update later
+  const [userLocation, setUserLocation] = useState(null); // Initialize as null
 
   useEffect(() => {
     async function fetchLocation() {
       try {
         const position = await getCurrLoc();
         const { latitude, longitude } = position.coords;
-        setUserLocation({ lat: latitude, lng: longitude });
+        const newUserLocation = { lat: latitude, lng: longitude };
+        setUserLocation(newUserLocation);
+
+        if (mapRef.current) {
+          mapRef.current.panTo(newUserLocation);
+          mapRef.current.setZoom(15); // Optionally adjust zoom when location is updated
+        }
       } catch (error) {
         console.error("Error getting current location:", error);
         // Handle error or set a default location
@@ -41,27 +42,30 @@ function MyMapComponent() {
 
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
+    if (userLocation) {
+      map.panTo(userLocation);
+      map.setZoom(15); // Adjust zoom level when map loads with user location
+    }
     handleNearbySearch();
-  }, []);
+  }, [userLocation]); // Depend on userLocation so it updates when userLocation changes
 
   const handleNearbySearch = useCallback(() => {
-    if (!mapRef.current) return;
+    if (!mapRef.current || !userLocation) return;
 
     const service = new window.google.maps.places.PlacesService(mapRef.current);
 
     const request = {
-      location: center,
-      radius: '500',
-      type: ['hospitals'],
+      location: userLocation, // Use userLocation for nearby search
+      radius: '25000',
+      type: ['hospital'], // Make sure this is the correct type
     };
 
     service.nearbySearch(request, (results, status) => {
-      console.log(results)
       if (status === window.google.maps.places.PlacesServiceStatus.OK && results) {
         setPlaces(results);
       }
     });
-  }, []);
+  }, [userLocation]); // Depend on userLocation
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
@@ -69,10 +73,9 @@ function MyMapComponent() {
   return (
     <GoogleMap
       mapContainerStyle={mapContainerStyle}
-      zoom={8}
-      center={userLocation}
-      // onLoad={map => mapRef.current = map}
-      onLoad = {onMapLoad}
+      zoom={8} // Initial zoom, will be updated in onMapLoad if userLocation is set
+      center={userLocation || { lat: -34.397, lng: 150.644 }} // Fallback to a default center if userLocation is not yet available
+      onLoad={onMapLoad}
     >
       {places.map((place) => (
         <Marker key={place.place_id} position={place.geometry.location} />
