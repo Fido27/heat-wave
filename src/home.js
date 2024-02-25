@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 
 export default function Home() {
-    console.log('Home page');
-
     return (
         <>
             <div className="Home">
@@ -47,10 +45,10 @@ export default function Home() {
 
 
                     <div className="Location help">
-
-                        {/*calling getCurrLoc function in location.js*/}
-                        <button className="location-button" onClick={getCurrLoc}><FontAwesomeIcon icon={faLocationDot} /> <span> Refugee Centers</span></button>
-
+                        <Link to={"/refugee"}>
+                            {/*calling getCurrLoc function in location.js*/}
+                            <button className="location-button" onClick={getCurrLoc}><FontAwesomeIcon icon={faLocationDot} /> <span> Refugee Centers</span></button>
+                        </Link>
                     </div>
 
                     <div className="Hospital help">
