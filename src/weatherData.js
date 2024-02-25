@@ -10,7 +10,7 @@ function WeatherComponent() {
     async function fetchWeather() {
       try {
         const coords = await getCurrLoc();
-        const { latitude, longitude } = coords.coords; // Assuming getCurrLoc() resolves with position object
+        const { latitude, longitude } = coords.coords;
 
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${OPENWEATHERMAP_API_KEY}&units=imperial`;
 
@@ -25,11 +25,8 @@ function WeatherComponent() {
     fetchWeather();
   }, []);
 
-  return (
-    <div>
-      {temperature ? <p>Current Temperature: {temperature} °F</p> : <p>Loading temperature...</p>}
-    </div>
-  );
+  // Return JSX. Conditionally render temperature or loading state.
+  return temperature ? <span>{temperature} °F</span> : <span>Loading temperature...</span>;
 }
 
 export default WeatherComponent;

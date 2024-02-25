@@ -14,10 +14,6 @@ export default function Home() {
                 {/*main container */}
                 <div className="main-container">
 
-                    <div className="App">
-                        <WeatherComponent />
-                        {/* Other components */}
-                    </div>
 
                     {/* // 3 main containers for  */}
                     <div className="container-Temp">
@@ -27,7 +23,7 @@ export default function Home() {
 
                             {/*change temperature according to the temperature */}
                             <p className='warning'>Dangerous heat levels expected! Take precautions to stay cool and hydrated. </p>
-                            <h2 className='temperature'>110 °F</h2>
+                            <h2 className='temperature'><WeatherComponent /></h2>
                         </div>
                     </div>
 
