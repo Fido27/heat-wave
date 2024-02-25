@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import MyMapComponent from './refugeeMap.js';
+import MyMapComponent from './map.js';
 
-export default function Refugee() {
+export default function Hospital() {
     return (
         <>
             <div className="map-content">

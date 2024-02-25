@@ -2,8 +2,8 @@ import "./App.css";
 import Home from './home.js';
 import Guide from './guide.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MyMapComponent from "./map.js";
 import Refugee from "./refugee.js";
+import Hospital from "./hospital.js";
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/guide" element={<Guide />} />
           <Route path="/refugee" element={<Refugee />} />
+          <Route path="/hospital" element={<Hospital />} />
         </Routes>
       </div>
     </Router>

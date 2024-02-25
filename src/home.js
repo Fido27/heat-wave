@@ -52,7 +52,7 @@ export default function Home() {
                     </div>
 
                     <div className="Hospital help">
-                    <Link to={"/refugee"}>
+                    <Link to={"/hospital"}>
                         {/*button for hospital */}
                         <button className="hospital-button"><FontAwesomeIcon icon={faStethoscope} /> <span>Nearest Hospital</span></button>
                         </Link>
