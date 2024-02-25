@@ -238,7 +238,7 @@ button:active {
   position: absolute;
 }
 .map-content {
-  height: 100vh; /* Full height of the viewport */
+  height: 112vh; /* Full height of the viewport */
   display: flex;
   flex-direction: column; /* Stack children vertically */
   background: linear-gradient(180deg,#000 0%, #560C0A 20%, #8C1F0D 40%, #C03E00 60%, #E77801 80%, #FDA506 100%);
@@ -246,7 +246,7 @@ button:active {
   box-sizing: border-box; /* Include padding in height calculation */
 }
 
-.child-map-container {
+.child-map-content {
   flex-grow: 1; /* Takes up all available space */
   border-radius: 5%;
   background: rgba(0, 0, 0, 0.75);

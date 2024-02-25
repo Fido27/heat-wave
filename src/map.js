@@ -4,8 +4,8 @@ import { getCurrLoc } from './backend/location';
 
 const mapContainerStyle = {
   width: '80vw',
-  height: '65vh',
-  marginTop: '3rem',
+  height: '70vh',
+  marginTop: '5rem',
   padding: '0.5rem',
   borderRadius: '1rem',
 };
@@ -61,7 +61,7 @@ function MyMapComponent() {
 
     const request = {
       location: userLocation, // Use userLocation for nearby search
-      radius: '25000',
+      radius: '5000',
       type: ['hospital'], // Make sure this is the correct type
     };
 
@@ -97,11 +97,11 @@ function MyMapComponent() {
           <Marker key={place.place_id} position={place.geometry.location} />
         ))}
       </GoogleMap>
-      <div style={{ margin:'5px', padding: '5px', height: '50px', overflowY: 'scroll', color: 'white' }}>
+      <div style={{ margin:'5px', padding: '5px', height: '40px', color: 'white' }}>
       <h4>Nearest Hospitals:</h4>
       </div>
-      <div style={{ margin:'10px', padding: '20px', maxHeight: '10vh', overflowY: 'scroll', color: 'white' }}>
-        <ul>{renderPlacesList()}</ul>
+      <div style={{ margin:'10px', padding: '10px', maxHeight: '12vh', overflowY: 'scroll', color: 'white' }}>
+        <p>{renderPlacesList()}</p>
       </div>
     </>
 
