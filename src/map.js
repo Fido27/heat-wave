@@ -13,10 +13,8 @@ const mapContainerStyle = {
 const libraries = ["places"];
 
 function MyMapComponent() {
-  console.log("API Key:", process.env.REACT_APP_MAPS_API_KEY);
-  console.log("my map component")
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
+    googleMapsApiKey: "AIzaSyBchUf958GR_Ft4i5aWdZzWKIr2IbKBMsQ",
     libraries,
   });
 
