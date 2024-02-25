@@ -2,10 +2,12 @@ import "./App.css";
 import Home from './home.js';
 import Guide from './guide.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MyMapComponent from "./map.js";
 
 
 function App() {
   return (
+    <>
     <Router>
       <div className="App">
 
@@ -16,6 +18,8 @@ function App() {
       </div>
     </Router>
 
+    <MyMapComponent/>
+    </>
   );
 }
 

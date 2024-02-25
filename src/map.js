@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import { getCurrLoc } from './backend/location';
+import HospitalDetails from './backend/hospitalDetails.js'; // Import the component
 
 const mapContainerStyle = {
   width: '100vw',
@@ -67,20 +68,36 @@ function MyMapComponent() {
     });
   }, [userLocation]); // Depend on userLocation
 
+  // Render the list of places
+  const renderPlacesList = () => {
+    return places.map((place) => (
+      <li key={place.place_id}>
+        {place.name} - {place.vicinity}
+      </li>
+    ));
+  };
+
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
   return (
-    <GoogleMap
-      mapContainerStyle={mapContainerStyle}
-      zoom={8} // Initial zoom, will be updated in onMapLoad if userLocation is set
-      center={userLocation || { lat: -34.397, lng: 150.644 }} // Fallback to a default center if userLocation is not yet available
-      onLoad={onMapLoad}
-    >
+    <>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={8} // Initial zoom, will be updated in onMapLoad if userLocation is set
+        center={userLocation || { lat: -34.397, lng: 150.644 }} // Fallback to a default center if userLocation is not yet available
+        onLoad={onMapLoad}
+      >
       {places.map((place) => (
-        <Marker key={place.place_id} position={place.geometry.location} />
-      ))}
-    </GoogleMap>
+          <Marker key={place.place_id} position={place.geometry.location} />
+        ))}
+      </GoogleMap>
+      <div style={{ padding: '20px', maxHeight: '50vh', overflowY: 'scroll' }}>
+        <h4>Nearest Hospitals:</h4>
+        <ul>{renderPlacesList()}</ul>
+      </div>
+    </>
+
   );
 }
 
