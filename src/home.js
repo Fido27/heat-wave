@@ -40,7 +40,8 @@ export default function Home() {
 
                     <div className="container-Help">
                         <div className="Call help">
-                            <button className="call-button">
+                            <a href="tel:+14807917066" className="call-button"/>
+                            <button>
                                 <FontAwesomeIcon icon={faPhone} /> <span>Call for Help</span>
                             </button>
                         </div>
