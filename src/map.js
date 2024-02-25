@@ -88,7 +88,7 @@ function MyMapComponent() {
     <>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={8} // Initial zoom, will be updated in onMapLoad if userLocation is set
+        zoom={6} // Initial zoom, will be updated in onMapLoad if userLocation is set
         center={userLocation || { lat: -34.397, lng: 150.644 }} // Fallback to a default center if userLocation is not yet available
         onLoad={onMapLoad}
         
