@@ -48,6 +48,8 @@ function App() {
           {/*button for hospital */}
           <button className="hospital-button"><FontAwesomeIcon icon={faStethoscope} /></button>
 
+          <MyMapComponent/>
+
 
         </div>
       
